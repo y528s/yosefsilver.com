@@ -27,11 +27,137 @@
       max-width: 680px;
       margin: 0 auto;
     }
+
+    /* NAV */
+    #nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      background: rgba(246,242,233,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    #nav .nav-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    #nav .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    #nav .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    #nav .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    /* HERO */
+    #hero {
+      padding: 80px 0 64px;
+    }
+
+    #hero .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    #hero .eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    #hero .headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    #hero .sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 21px;
+      color: var(--ink-muted);
+      margin-bottom: 24px;
+      line-height: 1.4;
+    }
+
+    #hero .body {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      color: var(--ink-muted);
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    #hero .btn {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #fff;
+      background: var(--accent);
+      padding: 14px 32px;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: opacity 0.2s;
+    }
+
+    #hero .btn:hover {
+      opacity: 0.88;
+    }
   </style>
 </head>
 <body>
-  <div id="nav"></div>
-  <div id="hero"></div>
+  <nav id="nav">
+    <a class="nav-name" href="#">Yosef Silver</a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#about">Writing</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <div id="hero">
+    <div class="eyebrow">Kansas City · Brighton · Jerusalem · 25+ countries</div>
+    <h1 class="headline">Connecting people is the work.</h1>
+    <p class="sub">I create the kind of things people gather around.</p>
+    <p class="body">Through marketing, technology, and community — it shows up in companies, campaigns, and rooms full of people who didn't know they needed each other.</p>
+    <a class="btn" href="#contact">Say hello →</a>
+  </div>
   <div id="about"></div>
   <div id="photo"></div>
   <div id="map"></div>
