@@ -52,6 +52,8 @@
     }
   }
   </script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
@@ -115,7 +117,7 @@
     }
 
     #nav .nav-links a:hover {
-      color: var(--ink);
+      color: var(--plum);
     }
 
     /* HERO */
@@ -191,6 +193,23 @@
     /* ABOUT */
     #about {
       padding: 64px 0 0;
+      overflow: hidden;
+    }
+
+    #about .headshot {
+      float: right;
+      width: 220px;
+      margin: 0 0 20px 28px;
+      border-radius: 4px;
+    }
+
+    #about .caption {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-style: italic;
+      color: var(--ink-muted);
+      clear: both;
+      margin-top: 12px;
     }
 
     #about p {
@@ -207,29 +226,10 @@
       font-size: 24px;
       color: var(--ink);
       line-height: 1.5;
-      border-left: 3px solid var(--accent);
+      border-left: 3px solid var(--plum);
       padding-left: 24px;
       margin-top: 40px;
       margin-bottom: 0;
-    }
-
-    /* PHOTO */
-    #photo {
-      padding: 56px 0 0;
-    }
-
-    #photo img {
-      width: 100%;
-      display: block;
-      border-radius: 4px;
-    }
-
-    #photo .caption {
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      font-style: italic;
-      color: var(--ink-muted);
-      margin-top: 12px;
     }
 
     /* MAP */
@@ -264,60 +264,61 @@
       margin-bottom: 32px;
     }
 
-    #map .map-wrap {
-      position: relative;
-      width: 100%;
-    }
-
-    #map svg {
+    #leaflet-map {
       width: 100%;
       height: 380px;
-      display: block;
-    }
-
-    #map .pin {
-      cursor: pointer;
-    }
-
-    #map .pin circle.dot {
-      fill: var(--accent);
-    }
-
-    #map .pin circle.pulse {
-      fill: var(--accent);
-      opacity: 0;
-      animation: pulse 2.5s ease-out infinite;
-    }
-
-    @keyframes pulse {
-      0% { r: 4; opacity: 0.5; }
-      100% { r: 16; opacity: 0; }
-    }
-
-    #map .tooltip {
-      position: absolute;
-      background: var(--ink);
-      color: #fff;
-      padding: 10px 14px;
       border-radius: 4px;
+      z-index: 1;
+    }
+
+    .leaflet-popup-content-wrapper {
       font-family: 'Inter', sans-serif;
       font-size: 13px;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.2s;
-      white-space: nowrap;
-      z-index: 10;
-      transform: translate(-50%, -100%);
-      margin-top: -12px;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
 
-    #map .tooltip .tt-city {
+    .leaflet-popup-content {
+      margin: 10px 14px;
+    }
+
+    .leaflet-popup-content .tt-city {
       font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
     }
 
-    #map .tooltip .tt-note {
+    .leaflet-popup-content .tt-note {
       font-style: italic;
-      opacity: 0.8;
+      color: var(--ink-muted);
+    }
+
+    .map-pin {
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    .map-pin::after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0;
+      animation: leaflet-pulse 2.5s ease-out infinite;
+    }
+
+    @keyframes leaflet-pulse {
+      0% { transform: scale(1); opacity: 0.5; }
+      100% { transform: scale(3); opacity: 0; }
     }
 
     #map .map-note {
@@ -371,7 +372,7 @@
     }
 
     #work .brand-logo {
-      max-height: 32px;
+      max-height: 52px;
       margin-bottom: 12px;
       display: block;
     }
@@ -397,6 +398,17 @@
       letter-spacing: 0.08em;
       color: var(--plum);
       white-space: nowrap;
+    }
+
+    #work a.brand-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    #work a.brand-link:hover .brand-name {
+      color: var(--plum);
+      transition: color 0.2s;
     }
 
     #work .brand-desc {
@@ -460,7 +472,7 @@
     }
 
     #social .social-row:hover .social-icon {
-      color: var(--accent);
+      color: var(--plum);
     }
 
     #social .social-content {
@@ -681,7 +693,7 @@
     #footer .footer-tagline {
       font-family: 'Inter', sans-serif;
       font-size: 12px;
-      color: var(--ink-muted);
+      color: var(--plum);
       text-align: center;
       margin-bottom: 12px;
     }
@@ -690,6 +702,20 @@
       text-align: center;
       font-size: 20px;
       letter-spacing: 8px;
+    }
+
+    /* PLUM HOVER DETAILS */
+    #map .section-label:hover::before,
+    #work .section-label:hover::before,
+    #social .section-label:hover::before,
+    #contact .section-label:hover::before {
+      background: var(--plum);
+      transition: background 0.2s;
+    }
+
+    #hero .btn:hover {
+      background: var(--plum);
+      opacity: 1;
     }
 
     /* SCROLL REVEAL */
@@ -743,8 +769,14 @@
         font-size: 15px;
       }
 
-      #map svg {
-        height: 240px;
+      #about .headshot {
+        float: none;
+        width: 100%;
+        margin: 0 0 24px 0;
+      }
+
+      #leaflet-map {
+        height: 260px;
       }
 
       #map h2 {
@@ -796,95 +828,68 @@
     <a class="btn" href="#contact">Say hello →</a>
   </div>
   <div id="about" class="reveal">
+    <img class="headshot" src="https://raw.githubusercontent.com/y528s/yosefsilver.com/main/yosef%20silver%20headshot.jpg" alt="Yosef Silver headshot">
     <p>Most of my work sits at the intersection of business, community, and family. Professionally, that shows up through marketing and email marketing, helping businesses communicate clearly and actually connect with the people they're trying to reach. The goal is simple: create things people gather around. Sometimes that's a company or a product. Sometimes it's a room full of people who didn't know they needed each other. It all has to work in the real world, not just sound good on paper.</p>
     <p>A healthy dose of wanderlust fuels a lot of this. By the time I bought my first home at 24, it was my 30th address. Originally from the UK and now based in Kansas City, by way of Jerusalem and Los Angeles, that movement shapes how I see things. It makes it easier to notice how people think, what they value, and what actually works across different worlds.</p>
     <p>Fusion is the engine. It's the marketing and email marketing agency that funds everything else. From there, I run High Opens for cannabis brands, Jewish Swag Shop, GatherKC, and a handful of community projects. Not a portfolio. An ecosystem. Each piece feeds the others.</p>
     <p class="closing">"The way we gather matters."</p>
-  </div>
-
-  <div id="photo" class="reveal">
-    <img src="https://raw.githubusercontent.com/y528s/yosefsilver.com/main/yosef%20silver%20headshot.jpg" alt="Yosef Silver headshot">
     <p class="caption">Yosef, part strategy, part wanderlust.</p>
   </div>
 
   <div id="map" class="reveal">
     <div class="section-label">Lived. Worked. Wandered.</div>
     <h2>25+ Countries. One Thread.</h2>
-    <div class="map-wrap">
-      <svg viewBox="0 0 960 480" xmlns="http://www.w3.org/2000/svg">
-        <rect width="960" height="480" fill="#C8D9EC" rx="4"/>
-        <!-- Simplified continents -->
-        <path d="M120,40 L200,35 L240,50 L260,80 L250,120 L240,140 L220,160 L200,200 L190,240 L180,260 L170,290 L160,310 L140,340 L130,370 L150,390 L170,400 L160,420 L140,440 L120,430 L110,400 L100,380 L90,350 L80,300 L85,250 L90,200 L95,150 L100,100 L110,60 Z" fill="#B0C4D8"/>
-        <path d="M200,200 L220,190 L250,195 L280,210 L290,230 L280,260 L270,290 L260,320 L250,350 L240,370 L230,380 L210,360 L200,330 L190,300 L195,270 L198,240 Z" fill="#B0C4D8"/>
-        <path d="M400,20 L500,15 L580,25 L620,40 L650,55 L680,50 L720,45 L760,55 L800,50 L830,60 L850,80 L840,100 L820,110 L780,105 L740,110 L700,120 L660,130 L640,140 L620,135 L600,130 L580,125 L560,120 L540,115 L520,110 L500,105 L480,100 L460,90 L440,80 L420,60 L410,40 Z" fill="#B0C4D8"/>
-        <path d="M420,60 L440,80 L460,90 L480,100 L500,110 L520,120 L540,130 L560,140 L570,160 L560,180 L540,190 L520,195 L500,190 L480,180 L460,170 L440,160 L430,140 L420,120 L415,100 L418,80 Z" fill="#B0C4D8"/>
-        <path d="M560,140 L580,135 L600,140 L620,150 L640,155 L660,145 L680,130 L700,125 L720,120 L740,130 L760,140 L780,150 L800,160 L820,170 L840,180 L850,200 L840,220 L820,230 L800,235 L780,230 L760,225 L740,230 L720,240 L700,245 L680,240 L660,230 L640,220 L620,210 L600,200 L580,190 L570,170 Z" fill="#B0C4D8"/>
-        <path d="M760,280 L800,270 L840,275 L870,290 L890,310 L900,340 L890,370 L870,390 L840,400 L810,395 L785,380 L770,360 L760,330 L755,300 Z" fill="#B0C4D8"/>
-        <!-- Pins -->
-        <g class="pin" data-city="Overland Park, KS" data-note="Current base. Building things.">
-          <circle class="pulse" cx="155" cy="172" r="4"/><circle class="dot" cx="155" cy="172" r="4"/>
-        </g>
-        <g class="pin" data-city="Brighton, UK" data-note="Feels like home.">
-          <circle class="pulse" cx="444" cy="68" r="4"/><circle class="dot" cx="444" cy="68" r="4"/>
-        </g>
-        <g class="pin" data-city="Jerusalem, Israel" data-note="Roots and meaning.">
-          <circle class="pulse" cx="558" cy="148" r="4"/><circle class="dot" cx="558" cy="148" r="4"/>
-        </g>
-        <g class="pin" data-city="Buenos Aires" data-note="South America office.">
-          <circle class="pulse" cx="218" cy="350" r="4"/><circle class="dot" cx="218" cy="350" r="4"/>
-        </g>
-        <g class="pin" data-city="Sint Maarten" data-note="Best plane spotting on earth.">
-          <circle class="pulse" cx="200" cy="210" r="4"/><circle class="dot" cx="200" cy="210" r="4"/>
-        </g>
-        <g class="pin" data-city="Budapest, Hungary" data-note="Best speaking engagement.">
-          <circle class="pulse" cx="510" cy="78" r="4"/><circle class="dot" cx="510" cy="78" r="4"/>
-        </g>
-        <g class="pin" data-city="Australia" data-note="Most memorable trip.">
-          <circle class="pulse" cx="815" cy="328" r="4"/><circle class="dot" cx="815" cy="328" r="4"/>
-        </g>
-      </svg>
-      <div class="tooltip" id="map-tooltip">
-        <span class="tt-city"></span><br><span class="tt-note"></span>
-      </div>
-    </div>
-    <p class="map-note">Hover the dots.</p>
+    <div id="leaflet-map"></div>
+    <p class="map-note">Click the dots.</p>
   </div>
   <div id="work" class="reveal">
     <div class="section-label">Things I've Built</div>
     <p class="intro">Everything I run is connected. Here is what that looks like.</p>
 
     <div class="brand-row">
-      <img class="brand-logo" src="https://raw.githubusercontent.com/y528s/yosefsilver.com/main/2020.07%20Logo%20-%20Fusion.png" alt="Fusion logo">
-      <div class="brand-header"><span class="brand-name">Fusion Inbound</span><span class="brand-tag">Agency</span></div>
-      <p class="brand-desc">Full-service marketing and email marketing. Strategy, SEO, web. The engine behind everything else.</p>
+      <a class="brand-link" href="https://fusioninbound.com" target="_blank">
+        <img class="brand-logo" src="https://raw.githubusercontent.com/y528s/yosefsilver.com/main/2020.07%20Logo%20-%20Fusion.png" alt="Fusion logo">
+        <div class="brand-header"><span class="brand-name">Fusion Inbound</span><span class="brand-tag">Agency</span></div>
+        <p class="brand-desc">Full-service marketing and email marketing. Strategy, SEO, web. The engine behind everything else.</p>
+      </a>
     </div>
 
     <div class="brand-row">
-      <img class="brand-logo" src="https://raw.githubusercontent.com/y528s/yosefsilver.com/main/High%20Opens%20Logo.png" alt="High Opens logo">
-      <div class="brand-header"><span class="brand-name">High Opens</span><span class="brand-tag">Email &amp; SMS</span></div>
-      <p class="brand-desc">Email and lifecycle marketing for cannabis brands. When ads are restricted, your list is what drives growth.</p>
+      <a class="brand-link" href="https://highopens.com" target="_blank">
+        <img class="brand-logo" src="https://raw.githubusercontent.com/y528s/yosefsilver.com/main/High%20Opens%20Logo.png" alt="High Opens logo">
+        <div class="brand-header"><span class="brand-name">High Opens</span><span class="brand-tag">Email &amp; SMS</span></div>
+        <p class="brand-desc">Email and lifecycle marketing for cannabis brands. When ads are restricted, your list is what drives growth.</p>
+      </a>
     </div>
 
     <div class="brand-row">
-      <img class="brand-logo" src="https://raw.githubusercontent.com/y528s/yosefsilver.com/main/jewish%20swag%20shop%20logo.png" alt="Jewish Swag Shop logo">
-      <div class="brand-header"><span class="brand-name">Jewish Swag Shop</span><span class="brand-tag">E-commerce</span></div>
-      <p class="brand-desc">Jewish apparel people actually wear. Unapologetic, a little irreverent. Supports charities and nonprofits with custom swag shops.</p>
+      <a class="brand-link" href="https://jewishswagshop.org" target="_blank">
+        <img class="brand-logo" src="https://raw.githubusercontent.com/y528s/yosefsilver.com/main/jewish%20swag%20shop%20logo.png" alt="Jewish Swag Shop logo">
+        <div class="brand-header"><span class="brand-name">Jewish Swag Shop</span><span class="brand-tag">E-commerce</span></div>
+        <p class="brand-desc">Jewish apparel people actually wear. Unapologetic, a little irreverent. Supports charities and nonprofits with custom swag shops.</p>
+      </a>
     </div>
 
     <div class="brand-row">
-      <img class="brand-logo" src="https://raw.githubusercontent.com/y528s/yosefsilver.com/main/GatherKC.png" alt="GatherKC logo">
-      <div class="brand-header"><span class="brand-name">GatherKC</span><span class="brand-tag">Community</span></div>
-      <p class="brand-desc">Shabbat dinners and events for Kansas City's Jewish community. Breaking down barriers that don't need to be there. Just show up.</p>
+      <a class="brand-link" href="https://gatherkc.org" target="_blank">
+        <img class="brand-logo" src="https://raw.githubusercontent.com/y528s/yosefsilver.com/main/GatherKC.png" alt="GatherKC logo">
+        <div class="brand-header"><span class="brand-name">GatherKC</span><span class="brand-tag">Community</span></div>
+        <p class="brand-desc">Shabbat dinners and events for Kansas City's Jewish community. Breaking down barriers that don't need to be there. Just show up.</p>
+      </a>
     </div>
 
     <div class="brand-row">
-      <div class="brand-header"><span class="brand-name">Kansas City Secrets</span><span class="brand-tag">Community</span></div>
-      <p class="brand-desc">A Kansas City Facebook group with 300,000 members. Started as an idea, became something people return to daily.</p>
+      <a class="brand-link" href="https://www.facebook.com/groups/kansascitysecrets/" target="_blank">
+        <div class="brand-header"><span class="brand-name">Kansas City Secrets</span><span class="brand-tag">Community</span></div>
+        <p class="brand-desc">A Kansas City Facebook group with 300,000 members. Started as an idea, became something people return to daily.</p>
+      </a>
     </div>
 
     <div class="brand-row">
-      <div class="brand-header"><span class="brand-name">MakeMyFlightKC</span><span class="brand-tag">Tool</span></div>
-      <p class="brand-desc">A simple tool built to solve a local problem. Free to use, very practical.</p>
+      <a class="brand-link" href="https://makemyflightkc.com/" target="_blank">
+        <div class="brand-header"><span class="brand-name">MakeMyFlightKC</span><span class="brand-tag">Tool</span></div>
+        <p class="brand-desc">A simple tool built to solve a local problem. Free to use, very practical.</p>
+      </a>
     </div>
 
     <div class="brand-row">
@@ -893,14 +898,18 @@
     </div>
 
     <div class="brand-row">
-      <img class="brand-logo" src="https://raw.githubusercontent.com/y528s/yosefsilver.com/main/this%20american%20bite%20logo.png" alt="This American Bite logo">
-      <div class="brand-header"><span class="brand-name">This American Bite</span><span class="brand-tag">Food Writing</span></div>
-      <p class="brand-desc">A kosher food blog that opened doors. Led to seven years as VP Marketing at a major US ecommerce brand. The archive is still live. I smoke a killer brisket.</p>
+      <a class="brand-link" href="https://thisamericanbite.com" target="_blank">
+        <img class="brand-logo" src="https://raw.githubusercontent.com/y528s/yosefsilver.com/main/this%20american%20bite%20logo.png" alt="This American Bite logo">
+        <div class="brand-header"><span class="brand-name">This American Bite</span><span class="brand-tag">Food Writing</span></div>
+        <p class="brand-desc">A kosher food blog that opened doors. Led to seven years as VP Marketing at a major US ecommerce brand. The archive is still live. I smoke a killer brisket.</p>
+      </a>
     </div>
 
     <div class="brand-row">
-      <div class="brand-header"><span class="brand-name">Substack</span><span class="brand-tag">Writing</span></div>
-      <p class="brand-desc">Personal essays and Jewish commentary. Written when there's something worth saying. Writing is how I relax.</p>
+      <a class="brand-link" href="https://speakingfromwithin.substack.com" target="_blank">
+        <div class="brand-header"><span class="brand-name">Substack</span><span class="brand-tag">Writing</span></div>
+        <p class="brand-desc">Personal essays and Jewish commentary. Written when there's something worth saying. Writing is how I relax.</p>
+      </a>
     </div>
   </div>
   <div id="social" class="reveal">
@@ -992,33 +1001,38 @@
     <p class="footer-flags">🇬🇧 🇮🇱 🇺🇸</p>
   </footer>
   <script>
-    // Map tooltip
+    // Leaflet map
     (function() {
-      var tooltip = document.getElementById('map-tooltip');
-      var pins = document.querySelectorAll('#map .pin');
-      pins.forEach(function(pin) {
-        pin.addEventListener('mouseenter', function(e) {
-          var city = pin.getAttribute('data-city');
-          var note = pin.getAttribute('data-note');
-          tooltip.querySelector('.tt-city').textContent = city;
-          tooltip.querySelector('.tt-note').textContent = note;
-          var dot = pin.querySelector('.dot');
-          var svgRect = dot.closest('svg').getBoundingClientRect();
-          var cx = parseFloat(dot.getAttribute('cx'));
-          var cy = parseFloat(dot.getAttribute('cy'));
-          var svgEl = dot.closest('svg');
-          var vb = svgEl.viewBox.baseVal;
-          var scaleX = svgRect.width / vb.width;
-          var scaleY = svgRect.height / vb.height;
-          var wrap = pin.closest('.map-wrap');
-          var wrapRect = wrap.getBoundingClientRect();
-          tooltip.style.left = (cx * scaleX) + 'px';
-          tooltip.style.top = (cy * scaleY - 8) + 'px';
-          tooltip.style.opacity = '1';
+      var map = L.map('leaflet-map', {
+        scrollWheelZoom: false,
+        zoomControl: true,
+        attributionControl: false
+      }).setView([20, 10], 2);
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        maxZoom: 6,
+        minZoom: 2
+      }).addTo(map);
+
+      var pins = [
+        { lat: 39.1, lng: -94.6, city: 'Overland Park, KS', note: 'Current base. Building things.' },
+        { lat: 50.8, lng: -0.1, city: 'Brighton, UK', note: 'Feels like home.' },
+        { lat: 31.8, lng: 35.2, city: 'Jerusalem, Israel', note: 'Roots and meaning.' },
+        { lat: -34.6, lng: -58.4, city: 'Buenos Aires', note: 'South America office.' },
+        { lat: 18.0, lng: -63.1, city: 'Sint Maarten', note: 'Best plane spotting on earth.' },
+        { lat: 47.5, lng: 19.0, city: 'Budapest, Hungary', note: 'Best speaking engagement.' },
+        { lat: -25.3, lng: 133.8, city: 'Australia', note: 'Most memorable trip.' }
+      ];
+
+      pins.forEach(function(p) {
+        var icon = L.divIcon({
+          className: '',
+          html: '<div class="map-pin"></div>',
+          iconSize: [12, 12],
+          iconAnchor: [6, 6]
         });
-        pin.addEventListener('mouseleave', function() {
-          tooltip.style.opacity = '0';
-        });
+        var marker = L.marker([p.lat, p.lng], { icon: icon }).addTo(map);
+        marker.bindPopup('<span class="tt-city">' + p.city + '</span><span class="tt-note">' + p.note + '</span>');
       });
     })();
 
