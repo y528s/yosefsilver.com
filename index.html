@@ -330,12 +330,32 @@
       100% { transform: scale(3); opacity: 0; }
     }
 
-    #map .map-note {
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      font-style: italic;
-      color: var(--ink-muted);
+    .map-cities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
       margin-top: 16px;
+    }
+
+    .map-city-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: none;
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      cursor: pointer;
+      color: var(--ink-muted);
+      transition: all 0.2s;
+    }
+
+    .map-city-btn:hover,
+    .map-city-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(46, 111, 106, 0.06);
     }
 
     /* WORK */
@@ -372,18 +392,30 @@
     }
 
     #work .brand-row {
-      padding: 28px 0;
+      padding: 28px 12px;
+      margin: 0 -12px;
       border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
     }
 
     #work .brand-row:first-of-type {
       border-top: 1px solid var(--border);
     }
 
+    #work .brand-row:hover {
+      background: rgba(122, 92, 126, 0.06);
+    }
+
     #work .brand-logo {
-      max-height: 52px;
-      margin-bottom: 12px;
-      display: block;
+      flex-shrink: 0;
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+    }
+
+    #work .brand-content {
+      flex: 1;
+      min-width: 0;
     }
 
     #work .brand-header {
@@ -412,7 +444,26 @@
     #work a.brand-link {
       text-decoration: none;
       color: inherit;
-      display: block;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    #work a.brand-link::after {
+      content: '\2197';
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 16px;
+      color: var(--ink-muted);
+      opacity: 0.4;
+      transition: opacity 0.2s, color 0.2s;
+    }
+
+    #work a.brand-link:hover::after {
+      opacity: 1;
+      color: var(--plum);
     }
 
     #work a.brand-link:hover .brand-name {
@@ -462,21 +513,27 @@
 
     #social .social-row {
       display: flex;
-      gap: 16px;
-      padding: 24px 0;
+      gap: 20px;
+      padding: 24px 12px;
+      margin: 0 -12px;
       border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
     }
 
     #social .social-row:first-of-type {
       border-top: 1px solid var(--border);
     }
 
+    #social .social-row:hover {
+      background: rgba(122, 92, 126, 0.06);
+    }
+
     #social .social-icon {
       flex-shrink: 0;
-      width: 18px;
-      height: 18px;
+      width: 28px;
+      height: 28px;
       color: var(--ink);
-      margin-top: 3px;
+      margin-top: 2px;
       transition: color 0.2s;
     }
 
@@ -823,8 +880,8 @@
   <nav id="nav">
     <a class="nav-name" href="#">Yosef Silver</a>
     <div class="nav-links">
-      <a href="#work">Work</a>
-      <a href="#about">Writing</a>
+      <a href="#work">Projects</a>
+      <a href="#social">My Links</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
@@ -851,7 +908,15 @@
     <div class="section-label">Lived. Worked. Wandered.</div>
     <h2>25+ Countries. One Thread.</h2>
     <div id="leaflet-map"></div>
-    <p class="map-note">Click the dots.</p>
+    <div class="map-cities">
+      <button class="map-city-btn" data-idx="0">Kansas City</button>
+      <button class="map-city-btn" data-idx="1">Brighton</button>
+      <button class="map-city-btn" data-idx="2">Jerusalem</button>
+      <button class="map-city-btn" data-idx="3">Buenos Aires</button>
+      <button class="map-city-btn" data-idx="4">Sint Maarten</button>
+      <button class="map-city-btn" data-idx="5">Budapest</button>
+      <button class="map-city-btn" data-idx="6">Australia</button>
+    </div>
   </div>
   <div id="work" class="reveal">
     <div class="section-label">Things I've Built</div>
@@ -860,67 +925,86 @@
     <div class="brand-row">
       <a class="brand-link" href="https://fusioninbound.com" target="_blank">
         <img class="brand-logo" src="https://raw.githubusercontent.com/y528s/yosefsilver.com/main/2020.07%20Logo%20-%20Fusion.png" alt="Fusion logo">
-        <div class="brand-header"><span class="brand-name">Fusion Inbound</span><span class="brand-tag">Agency</span></div>
-        <p class="brand-desc">Full-service marketing and email marketing. Strategy, SEO, web. The engine behind everything else.</p>
+        <div class="brand-content">
+          <div class="brand-header"><span class="brand-name">Fusion Inbound</span><span class="brand-tag">Agency</span></div>
+          <p class="brand-desc">Full-service marketing and email marketing. Strategy, SEO, web. The engine behind everything else.</p>
+        </div>
       </a>
     </div>
 
     <div class="brand-row">
       <a class="brand-link" href="https://highopens.com" target="_blank">
         <img class="brand-logo" src="https://raw.githubusercontent.com/y528s/yosefsilver.com/main/High%20Opens%20Logo.png" alt="High Opens logo">
-        <div class="brand-header"><span class="brand-name">High Opens</span><span class="brand-tag">Email &amp; SMS</span></div>
-        <p class="brand-desc">Email and lifecycle marketing for cannabis brands. When ads are restricted, your list is what drives growth.</p>
+        <div class="brand-content">
+          <div class="brand-header"><span class="brand-name">High Opens</span><span class="brand-tag">Email &amp; SMS</span></div>
+          <p class="brand-desc">Email and lifecycle marketing for cannabis brands. When ads are restricted, your list is what drives growth.</p>
+        </div>
       </a>
     </div>
 
     <div class="brand-row">
       <a class="brand-link" href="https://jewishswagshop.org" target="_blank">
         <img class="brand-logo" src="https://raw.githubusercontent.com/y528s/yosefsilver.com/main/jewish%20swag%20shop%20logo.png" alt="Jewish Swag Shop logo">
-        <div class="brand-header"><span class="brand-name">Jewish Swag Shop</span><span class="brand-tag">E-commerce</span></div>
-        <p class="brand-desc">Jewish apparel people actually wear. Unapologetic, a little irreverent. Supports charities and nonprofits with custom swag shops.</p>
+        <div class="brand-content">
+          <div class="brand-header"><span class="brand-name">Jewish Swag Shop</span><span class="brand-tag">E-commerce</span></div>
+          <p class="brand-desc">Jewish apparel people actually wear. Unapologetic, a little irreverent. Supports charities and nonprofits with custom swag shops.</p>
+        </div>
       </a>
     </div>
 
     <div class="brand-row">
       <a class="brand-link" href="https://gatherkc.org" target="_blank">
         <img class="brand-logo" src="https://raw.githubusercontent.com/y528s/yosefsilver.com/main/GatherKC.png" alt="GatherKC logo">
-        <div class="brand-header"><span class="brand-name">GatherKC</span><span class="brand-tag">Community</span></div>
-        <p class="brand-desc">Shabbat dinners and events for Kansas City's Jewish community. Breaking down barriers that don't need to be there. Just show up.</p>
+        <div class="brand-content">
+          <div class="brand-header"><span class="brand-name">GatherKC</span><span class="brand-tag">Community</span></div>
+          <p class="brand-desc">Shabbat dinners and events for Kansas City's Jewish community. Breaking down barriers that don't need to be there. Just show up.</p>
+        </div>
       </a>
-    </div>
-
-    <div class="brand-row">
-      <a class="brand-link" href="https://www.facebook.com/groups/kansascitysecrets/" target="_blank">
-        <div class="brand-header"><span class="brand-name">Kansas City Secrets</span><span class="brand-tag">Community</span></div>
-        <p class="brand-desc">A Kansas City Facebook group with 300,000 members. Started as an idea, became something people return to daily.</p>
-      </a>
-    </div>
-
-    <div class="brand-row">
-      <a class="brand-link" href="https://makemyflightkc.com/" target="_blank">
-        <div class="brand-header"><span class="brand-name">MakeMyFlightKC</span><span class="brand-tag">Tool</span></div>
-        <p class="brand-desc">A simple tool built to solve a local problem. Free to use, very practical.</p>
-      </a>
-    </div>
-
-    <div class="brand-row">
-      <div class="brand-header"><span class="brand-name">SEOBeers KC</span><span class="brand-tag">Meetups</span></div>
-      <p class="brand-desc">Former meetups for Kansas City SEOs. Good beer, real conversation, no pitches.</p>
     </div>
 
     <div class="brand-row">
       <a class="brand-link" href="https://thisamericanbite.com" target="_blank">
         <img class="brand-logo" src="https://raw.githubusercontent.com/y528s/yosefsilver.com/main/this%20american%20bite%20logo.png" alt="This American Bite logo">
-        <div class="brand-header"><span class="brand-name">This American Bite</span><span class="brand-tag">Food Writing</span></div>
-        <p class="brand-desc">A kosher food blog that opened doors. Led to seven years as VP Marketing at a major US ecommerce brand. The archive is still live. I smoke a killer brisket.</p>
+        <div class="brand-content">
+          <div class="brand-header"><span class="brand-name">This American Bite</span><span class="brand-tag">Food Writing</span></div>
+          <p class="brand-desc">A kosher food blog that opened doors. Led to seven years as VP Marketing at a major US ecommerce brand. The archive is still live. I smoke a killer brisket.</p>
+        </div>
       </a>
     </div>
 
     <div class="brand-row">
       <a class="brand-link" href="https://speakingfromwithin.substack.com" target="_blank">
-        <div class="brand-header"><span class="brand-name">Substack</span><span class="brand-tag">Writing</span></div>
-        <p class="brand-desc">Personal essays and Jewish commentary. Written when there's something worth saying. Writing is how I relax.</p>
+        <svg class="brand-logo" viewBox="0 0 24 24" fill="var(--accent)" xmlns="http://www.w3.org/2000/svg"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+        <div class="brand-content">
+          <div class="brand-header"><span class="brand-name">Speaking From Within on Substack</span><span class="brand-tag">Writing</span></div>
+          <p class="brand-desc">Personal essays and Jewish commentary. Written when there's something worth saying. Writing is how I relax.</p>
+        </div>
       </a>
+    </div>
+
+    <div class="brand-row">
+      <a class="brand-link" href="https://www.facebook.com/groups/kansascitysecrets/" target="_blank">
+        <div class="brand-content">
+          <div class="brand-header"><span class="brand-name">Kansas City Secrets</span><span class="brand-tag">Community</span></div>
+          <p class="brand-desc">A Kansas City Facebook group with 300,000 members. Started as an idea, became something people return to daily.</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="brand-row">
+      <a class="brand-link" href="https://makemyflightkc.com/" target="_blank">
+        <div class="brand-content">
+          <div class="brand-header"><span class="brand-name">MakeMyFlightKC</span><span class="brand-tag">Tool</span></div>
+          <p class="brand-desc">A simple tool built to solve a local problem. Free to use, very practical.</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="brand-row">
+      <div class="brand-content">
+        <div class="brand-header"><span class="brand-name">SEOBeers KC</span><span class="brand-tag">Meetups</span></div>
+        <p class="brand-desc">Former meetups for Kansas City SEOs. Good beer, real conversation, no pitches.</p>
+      </div>
     </div>
   </div>
   <div id="social" class="reveal">
@@ -1035,6 +1119,7 @@
         { lat: -25.3, lng: 133.8, city: 'Australia', note: 'Most memorable trip.' }
       ];
 
+      var markers = [];
       pins.forEach(function(p) {
         var icon = L.divIcon({
           className: '',
@@ -1044,6 +1129,19 @@
         });
         var marker = L.marker([p.lat, p.lng], { icon: icon }).addTo(map);
         marker.bindPopup('<span class="tt-city">' + p.city + '</span><span class="tt-note">' + p.note + '</span>');
+        markers.push(marker);
+      });
+
+      var btns = document.querySelectorAll('.map-city-btn');
+      btns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var idx = parseInt(btn.getAttribute('data-idx'));
+          var p = pins[idx];
+          map.setView([p.lat, p.lng], 5, { animate: true });
+          markers[idx].openPopup();
+          btns.forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+        });
       });
     })();
 
