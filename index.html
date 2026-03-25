@@ -88,9 +88,110 @@
       padding: 0 24px;
     }
 
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(246, 242, 233, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero */
+    #hero {
+      padding-top: 120px;
+      padding-bottom: 80px;
+    }
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink-muted);
+      margin-bottom: 28px;
+    }
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      font-weight: 500;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+    .hero-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink-muted);
+      margin-bottom: 28px;
+    }
+    .hero-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      color: var(--ink-muted);
+      max-width: 580px;
+      line-height: 1.65;
+      margin-bottom: 40px;
+    }
+    .btn-primary {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: var(--accent);
+      color: var(--white);
+      padding: 14px 32px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--plum);
+    }
+
     /* Placeholder sections */
-    #nav { min-height: 60px; }
-    #hero { min-height: 200px; padding-top: 100px; }
     #about { min-height: 200px; }
     #photo { min-height: 200px; }
     #map { min-height: 200px; }
@@ -99,14 +200,37 @@
     #email-capture { min-height: 200px; }
     #contact { min-height: 200px; }
     #footer { min-height: 80px; }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero-h1 { font-size: 36px; }
+      .hero-h2 { font-size: 19px; }
+      .hero-body { font-size: 16px; }
+    }
   </style>
 </head>
 <body>
 
-  <nav id="nav"></nav>
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-name">Yosef Silver</a>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#social">Writing</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <div class="container">
-    <section id="hero"></section>
+    <section id="hero">
+      <p class="hero-eyebrow">Marketer. Entrepreneur. Connector.</p>
+      <h1 class="hero-h1">The internet is moving faster than ever. Your marketing should too.</h1>
+      <h2 class="hero-h2">I create the kind of things people gather around.</h2>
+      <p class="hero-body">Strategy, execution, and everything in between for businesses that want real growth.</p>
+      <a href="#contact" class="btn-primary">Start a conversation</a>
+    </section>
     <section id="about"></section>
     <section id="photo"></section>
     <section id="map"></section>
