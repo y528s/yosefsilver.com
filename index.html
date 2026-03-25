@@ -196,20 +196,29 @@
       overflow: hidden;
     }
 
-    #about .headshot {
+    #about .headshot-frame {
       float: right;
       width: 220px;
       margin: 0 0 20px 28px;
-      border-radius: 4px;
+      background: var(--white);
+      padding: 10px 10px 8px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(26,26,26,0.06);
+    }
+
+    #about .headshot {
+      width: 100%;
+      display: block;
+      border-radius: 0;
     }
 
     #about .caption {
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 11px;
       font-style: italic;
       color: var(--ink-muted);
-      clear: both;
-      margin-top: 12px;
+      margin-top: 8px;
+      text-align: center;
     }
 
     #about p {
@@ -769,7 +778,7 @@
         font-size: 15px;
       }
 
-      #about .headshot {
+      #about .headshot-frame {
         float: none;
         width: 100%;
         margin: 0 0 24px 0;
@@ -828,12 +837,14 @@
     <a class="btn" href="#contact">Say hello →</a>
   </div>
   <div id="about" class="reveal">
-    <img class="headshot" src="https://raw.githubusercontent.com/y528s/yosefsilver.com/main/yosef%20silver%20headshot.jpg" alt="Yosef Silver headshot">
+    <div class="headshot-frame">
+      <img class="headshot" src="https://raw.githubusercontent.com/y528s/yosefsilver.com/main/yosef%20silver%20headshot.jpg" alt="Yosef Silver headshot">
+      <p class="caption">Yosef, part strategy, part wanderlust.</p>
+    </div>
     <p>Most of my work sits at the intersection of business, community, and family. Professionally, that shows up through marketing and email marketing, helping businesses communicate clearly and actually connect with the people they're trying to reach. The goal is simple: create things people gather around. Sometimes that's a company or a product. Sometimes it's a room full of people who didn't know they needed each other. It all has to work in the real world, not just sound good on paper.</p>
     <p>A healthy dose of wanderlust fuels a lot of this. By the time I bought my first home at 24, it was my 30th address. Originally from the UK and now based in Kansas City, by way of Jerusalem and Los Angeles, that movement shapes how I see things. It makes it easier to notice how people think, what they value, and what actually works across different worlds.</p>
     <p>Fusion is the engine. It's the marketing and email marketing agency that funds everything else. From there, I run High Opens for cannabis brands, Jewish Swag Shop, GatherKC, and a handful of community projects. Not a portfolio. An ecosystem. Each piece feeds the others.</p>
     <p class="closing">"The way we gather matters."</p>
-    <p class="caption">Yosef, part strategy, part wanderlust.</p>
   </div>
 
   <div id="map" class="reveal">
