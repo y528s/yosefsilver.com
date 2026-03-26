@@ -385,6 +385,15 @@
       background: rgba(46, 111, 106, 0.06);
     }
 
+    .map-countries {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      color: var(--ink-muted);
+      margin-top: 12px;
+      opacity: 0.6;
+    }
+
     /* WORK */
     #work {
       padding: 64px 0;
@@ -419,6 +428,9 @@
     }
 
     #work .brand-row {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
       padding: 28px 12px;
       margin: 0 -12px;
       border-bottom: 1px solid var(--border);
@@ -430,7 +442,7 @@
     }
 
     #work .brand-row:hover {
-      background: rgba(122, 92, 126, 0.06);
+      background: rgba(122, 92, 126, 0.12);
     }
 
     #work .brand-logo {
@@ -569,7 +581,7 @@
     }
 
     #social .social-row:hover {
-      background: rgba(122, 92, 126, 0.06);
+      background: rgba(122, 92, 126, 0.12);
     }
 
     #social .social-icon {
@@ -954,7 +966,7 @@
 
   <div id="map" class="reveal">
     <div class="section-label">Lived. Worked. Wandered.</div>
-    <h2>Passport stamps. And the lessons that came with them.</h2>
+    <h2>Passport stamps.<br><span style="font-size:0.75em;font-weight:400">And the lessons that came with them.</span></h2>
     <p class="map-copy">A lot of this is powered by a mild obsession with not paying full price for flights.</p>
     <p class="map-copy">I've spent years figuring out points, miles, routing tricks, and the kind of strategies that make airlines and hotels quietly regret their decisions. I'm usually the person friends come to before they book anything.</p>
     <p class="map-copy">Ask me how I turned a cat food purchase into an international business class flight. That's not a one-off. That's knowing the system.</p>
@@ -966,7 +978,11 @@
       <button class="map-city-btn" data-idx="2">Manchester</button>
       <button class="map-city-btn" data-idx="3">Jerusalem</button>
       <button class="map-city-btn" data-idx="4">Los Angeles</button>
+      <button class="map-city-btn" data-idx="5">Siofok</button>
+      <button class="map-city-btn" data-idx="6">Australia</button>
+      <button class="map-city-btn" data-idx="7">Seattle</button>
     </div>
+    <p class="map-countries">NL · NO · PA · PL · PT · IL · FR · DE · GR · IE · IT · MX · AR · BE · BR · CA · SXM · CZ</p>
   </div>
   <div id="work" class="reveal">
     <div class="section-label">Things I've Built</div>
@@ -1024,7 +1040,7 @@
 
     <div class="brand-row">
       <a class="brand-link" href="https://speakingfromwithin.substack.com" target="_blank">
-        <svg class="brand-icon" viewBox="0 0 24 24" fill="var(--accent)" xmlns="http://www.w3.org/2000/svg"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="4" x2="20" y2="4"/><line x1="4" y1="10" x2="20" y2="10"/><path d="M4 16l8 5 8-5"/></svg>
         <div class="brand-content">
           <div class="brand-header"><span class="brand-name">Speaking From Within on Substack</span><span class="brand-tag">Writing</span></div>
           <p class="brand-desc">Personal essays and Jewish commentary. Written when there's something worth saying. Writing is how I relax.</p>
@@ -1168,7 +1184,10 @@
         { lat: 50.8, lng: -0.1, city: 'Brighton, UK', note: 'Feels like home.' },
         { lat: 53.48, lng: -2.24, city: 'Manchester, UK', note: 'Where it started.' },
         { lat: 31.8, lng: 35.2, city: 'Jerusalem, Israel', note: 'Roots and meaning.' },
-        { lat: 34.05, lng: -118.24, city: 'Los Angeles, CA', note: 'A chapter.' }
+        { lat: 34.05, lng: -118.24, city: 'Los Angeles, CA', note: 'A chapter.' },
+        { lat: 46.9, lng: 18.05, city: 'Siofok, Hungary', note: 'Best speaking engagement.' },
+        { lat: -25.3, lng: 133.8, city: 'Australia', note: 'Most memorable trip.' },
+        { lat: 47.61, lng: -122.33, city: 'Seattle, WA', note: 'My PNW happy place.' }
       ];
 
       var markers = [];
@@ -1194,12 +1213,10 @@
         { lat: 46.6, lng: 2.35, name: 'France' },
         { lat: 51.17, lng: 10.45, name: 'Germany' },
         { lat: 39.07, lng: 21.82, name: 'Greece' },
-        { lat: 46.9, lng: 18.05, name: 'Hungary' },
         { lat: 53.14, lng: -7.69, name: 'Ireland' },
         { lat: 41.87, lng: 12.57, name: 'Italy' },
         { lat: 23.63, lng: -102.55, name: 'Mexico' },
         { lat: -34.6, lng: -58.4, name: 'Argentina' },
-        { lat: -25.3, lng: 133.8, name: 'Australia' },
         { lat: 50.85, lng: 4.35, name: 'Belgium' },
         { lat: -14.24, lng: -51.93, name: 'Brazil' },
         { lat: 56.13, lng: -106.35, name: 'Canada' },
