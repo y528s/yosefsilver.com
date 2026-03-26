@@ -914,7 +914,7 @@
       <button class="map-city-btn" data-idx="2">Jerusalem</button>
       <button class="map-city-btn" data-idx="3">Buenos Aires</button>
       <button class="map-city-btn" data-idx="4">Sint Maarten</button>
-      <button class="map-city-btn" data-idx="5">Budapest</button>
+      <button class="map-city-btn" data-idx="5">Siofok</button>
       <button class="map-city-btn" data-idx="6">Australia</button>
     </div>
   </div>
@@ -1115,7 +1115,7 @@
         { lat: 31.8, lng: 35.2, city: 'Jerusalem, Israel', note: 'Roots and meaning.' },
         { lat: -34.6, lng: -58.4, city: 'Buenos Aires', note: 'South America office.' },
         { lat: 18.0, lng: -63.1, city: 'Sint Maarten', note: 'Best plane spotting on earth.' },
-        { lat: 47.5, lng: 19.0, city: 'Budapest, Hungary', note: 'Best speaking engagement.' },
+        { lat: 46.9, lng: 18.05, city: 'Siofok, Hungary', note: 'Best speaking engagement.' },
         { lat: -25.3, lng: 133.8, city: 'Australia', note: 'Most memorable trip.' }
       ];
 
@@ -1137,8 +1137,11 @@
         btn.addEventListener('click', function() {
           var idx = parseInt(btn.getAttribute('data-idx'));
           var p = pins[idx];
-          map.setView([p.lat, p.lng], 5, { animate: true });
-          markers[idx].openPopup();
+          map.closePopup();
+          map.once('moveend', function() {
+            markers[idx].openPopup();
+          });
+          map.flyTo([p.lat, p.lng], 4);
           btns.forEach(function(b) { b.classList.remove('active'); });
           btn.classList.add('active');
         });
