@@ -1388,7 +1388,8 @@
 
       window.addEventListener('scroll', function() {
         var rect = contact.getBoundingClientRect();
-        var inView = rect.top < window.innerHeight * 0.8;
+        var nearBottom = (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 200);
+        var inView = rect.top < window.innerHeight * 0.8 || nearBottom;
 
         if (inView && !isTop) {
           isTop = true;
