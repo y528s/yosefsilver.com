@@ -303,8 +303,8 @@
     }
 
     .map-pin {
-      width: 12px;
-      height: 12px;
+      width: 14px;
+      height: 14px;
       background: var(--accent);
       border-radius: 50%;
       border: 2px solid #fff;
@@ -315,19 +315,33 @@
     .map-pin::after {
       content: '';
       position: absolute;
-      top: -4px;
-      left: -4px;
-      width: 16px;
-      height: 16px;
+      top: -5px;
+      left: -5px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       background: var(--accent);
       opacity: 0;
-      animation: leaflet-pulse 2.5s ease-out infinite;
+      animation: leaflet-pulse 3.5s ease-out infinite;
     }
 
     @keyframes leaflet-pulse {
-      0% { transform: scale(1); opacity: 0.5; }
+      0% { transform: scale(1); opacity: 0.4; }
       100% { transform: scale(3); opacity: 0; }
+    }
+
+    .map-pin-visited {
+      width: 8px;
+      height: 8px;
+      background: var(--plum);
+      border-radius: 50%;
+      border: 1.5px solid #fff;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+
+    .map-pin-visited:hover {
+      transform: scale(1.1);
     }
 
     .map-cities {
@@ -911,11 +925,9 @@
     <div class="map-cities">
       <button class="map-city-btn" data-idx="0">Kansas City</button>
       <button class="map-city-btn" data-idx="1">Brighton</button>
-      <button class="map-city-btn" data-idx="2">Jerusalem</button>
-      <button class="map-city-btn" data-idx="3">Buenos Aires</button>
-      <button class="map-city-btn" data-idx="4">Sint Maarten</button>
-      <button class="map-city-btn" data-idx="5">Siofok</button>
-      <button class="map-city-btn" data-idx="6">Australia</button>
+      <button class="map-city-btn" data-idx="2">Manchester</button>
+      <button class="map-city-btn" data-idx="3">Jerusalem</button>
+      <button class="map-city-btn" data-idx="4">Los Angeles</button>
     </div>
   </div>
   <div id="work" class="reveal">
@@ -1109,34 +1121,68 @@
         minZoom: 2
       }).addTo(map);
 
-      var pins = [
+      // Primary anchor locations — teal, pulsing, larger
+      var primaryPins = [
         { lat: 39.1, lng: -94.6, city: 'Overland Park, KS', note: 'Current base. Building things.' },
         { lat: 50.8, lng: -0.1, city: 'Brighton, UK', note: 'Feels like home.' },
+        { lat: 53.48, lng: -2.24, city: 'Manchester, UK', note: 'Where it started.' },
         { lat: 31.8, lng: 35.2, city: 'Jerusalem, Israel', note: 'Roots and meaning.' },
-        { lat: -34.6, lng: -58.4, city: 'Buenos Aires', note: 'South America office.' },
-        { lat: 18.0, lng: -63.1, city: 'Sint Maarten', note: 'Best plane spotting on earth.' },
-        { lat: 46.9, lng: 18.05, city: 'Siofok, Hungary', note: 'Best speaking engagement.' },
-        { lat: -25.3, lng: 133.8, city: 'Australia', note: 'Most memorable trip.' }
+        { lat: 34.05, lng: -118.24, city: 'Los Angeles, CA', note: 'A chapter.' }
       ];
 
       var markers = [];
-      pins.forEach(function(p) {
+      primaryPins.forEach(function(p) {
         var icon = L.divIcon({
           className: '',
           html: '<div class="map-pin"></div>',
-          iconSize: [12, 12],
-          iconAnchor: [6, 6]
+          iconSize: [14, 14],
+          iconAnchor: [7, 7]
         });
-        var marker = L.marker([p.lat, p.lng], { icon: icon }).addTo(map);
+        var marker = L.marker([p.lat, p.lng], { icon: icon, zIndexOffset: 100 }).addTo(map);
         marker.bindPopup('<span class="tt-city">' + p.city + '</span><span class="tt-note">' + p.note + '</span>');
         markers.push(marker);
       });
 
+      // Visited countries — plum, static, smaller
+      var visitedPins = [
+        { lat: 52.37, lng: 4.9, name: 'Netherlands' },
+        { lat: 59.91, lng: 10.75, name: 'Norway' },
+        { lat: 8.98, lng: -79.52, name: 'Panama' },
+        { lat: 51.92, lng: 19.15, name: 'Poland' },
+        { lat: 38.72, lng: -9.14, name: 'Portugal' },
+        { lat: 46.6, lng: 2.35, name: 'France' },
+        { lat: 51.17, lng: 10.45, name: 'Germany' },
+        { lat: 39.07, lng: 21.82, name: 'Greece' },
+        { lat: 46.9, lng: 18.05, name: 'Hungary' },
+        { lat: 53.14, lng: -7.69, name: 'Ireland' },
+        { lat: 41.87, lng: 12.57, name: 'Italy' },
+        { lat: 23.63, lng: -102.55, name: 'Mexico' },
+        { lat: -34.6, lng: -58.4, name: 'Argentina' },
+        { lat: -25.3, lng: 133.8, name: 'Australia' },
+        { lat: 50.85, lng: 4.35, name: 'Belgium' },
+        { lat: -14.24, lng: -51.93, name: 'Brazil' },
+        { lat: 56.13, lng: -106.35, name: 'Canada' },
+        { lat: 18.0, lng: -63.1, name: 'Saint Martin' },
+        { lat: 49.82, lng: 15.47, name: 'Czech Republic' }
+      ];
+
+      visitedPins.forEach(function(v) {
+        var icon = L.divIcon({
+          className: '',
+          html: '<div class="map-pin-visited"></div>',
+          iconSize: [8, 8],
+          iconAnchor: [4, 4]
+        });
+        L.marker([v.lat, v.lng], { icon: icon }).addTo(map)
+          .bindTooltip(v.name, { direction: 'top', offset: [0, -6] });
+      });
+
+      // City button interaction
       var btns = document.querySelectorAll('.map-city-btn');
       btns.forEach(function(btn) {
         btn.addEventListener('click', function() {
           var idx = parseInt(btn.getAttribute('data-idx'));
-          var p = pins[idx];
+          var p = primaryPins[idx];
           map.closePopup();
           map.once('moveend', function() {
             markers[idx].openPopup();
