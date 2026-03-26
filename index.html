@@ -87,10 +87,12 @@
       --accent: #2E6F6A;
       --plum: #7A5C7E;
       --border: rgba(26,26,26,0.1);
+      --bg: #F6F2E9;
+      --bg-alt: #F2EDE3;
     }
 
     body {
-      background: #F6F2E9;
+      background: var(--bg);
       font-family: 'Inter', sans-serif;
       color: var(--ink);
       max-width: 680px;
@@ -146,7 +148,7 @@
 
     /* HERO */
     #hero {
-      padding: 120px 0 64px;
+      padding: 120px 0 88px;
     }
 
     #hero .eyebrow {
@@ -158,7 +160,7 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--accent);
-      margin-bottom: 24px;
+      margin-bottom: 32px;
     }
 
     #hero .eyebrow::before {
@@ -175,7 +177,7 @@
       font-weight: 700;
       line-height: 1.1;
       color: var(--ink);
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
     #hero .sub {
@@ -183,7 +185,7 @@
       font-style: italic;
       font-size: 21px;
       color: var(--ink-muted);
-      margin-bottom: 24px;
+      margin-bottom: 28px;
       line-height: 1.4;
     }
 
@@ -192,12 +194,12 @@
       font-size: 17px;
       color: var(--ink-muted);
       line-height: 1.7;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     /* TEXT WIDTH CONSTRAINTS */
     #hero .headline, #hero .sub, #hero .body { max-width: 560px; }
-    #about p, #map .map-copy, #work .intro, #social .intro, #contact .contact-body { max-width: 640px; }
+    #about p, #map .map-copy, #work .intro, #social .intro, #contact .contact-body, #services .services-list p { max-width: 620px; }
 
     /* FLOATING ACTION BUTTON */
     .fab {
@@ -239,7 +241,7 @@
 
     /* ABOUT */
     #about {
-      padding: 96px 0 0;
+      padding: 88px 0 0;
       overflow: hidden;
     }
 
@@ -289,7 +291,11 @@
 
     /* MAP */
     #map {
-      padding: 96px 0;
+      padding: 88px 0;
+      margin: 0 calc(-50vw + 50%);
+      padding-left: calc(50vw - 340px);
+      padding-right: calc(50vw - 340px);
+      background: var(--bg-alt);
     }
 
     #map .section-label {
@@ -301,7 +307,7 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--accent);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     #map .section-label::before {
@@ -328,7 +334,7 @@
     }
 
     #map .map-copy:last-of-type {
-      margin-bottom: 32px;
+      margin-bottom: 40px;
     }
 
     #leaflet-map {
@@ -459,23 +465,54 @@
 
     /* SERVICES */
     #services {
-      padding: 96px 0;
+      padding: 88px 0;
+    }
+
+    #services .services-panel {
+      background: var(--bg-alt);
+      border: 1px solid rgba(26,26,26,0.08);
+      border-radius: 10px;
+      padding: 36px 40px;
+      max-width: 620px;
+    }
+
+    #services .services-panel .section-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    #services .services-panel .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
     }
 
     #services .services-list p {
       font-family: 'Inter', sans-serif;
-      font-size: 17px;
+      font-size: 16px;
       color: var(--ink-muted);
-      line-height: 1.75;
-      margin-bottom: 12px;
-      max-width: 640px;
+      line-height: 1.7;
+      margin-bottom: 10px;
       padding-left: 16px;
       border-left: 2px solid var(--accent);
     }
 
+    #services .services-list p:last-child {
+      margin-bottom: 0;
+    }
+
     /* WORK */
     #work {
-      padding: 96px 0;
+      padding: 88px 0;
     }
 
     #work .section-label {
@@ -487,7 +524,7 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--accent);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     #work .section-label::before {
@@ -500,9 +537,9 @@
 
     #work .intro {
       font-family: 'Inter', sans-serif;
-      font-size: 15px;
+      font-size: 16px;
       color: var(--ink-muted);
-      margin-bottom: 40px;
+      margin-bottom: 32px;
       line-height: 1.6;
     }
 
@@ -510,10 +547,10 @@
       display: flex;
       gap: 20px;
       align-items: flex-start;
-      padding: 28px 12px;
+      padding: 32px 12px;
       margin: 0 -12px;
       border-bottom: 1px solid var(--border);
-      transition: background 0.2s;
+      transition: background 150ms, transform 150ms;
     }
 
     #work .brand-row:first-of-type {
@@ -618,7 +655,11 @@
 
     /* SOCIAL */
     #social {
-      padding: 96px 0;
+      padding: 88px 0;
+      margin: 0 calc(-50vw + 50%);
+      padding-left: calc(50vw - 340px);
+      padding-right: calc(50vw - 340px);
+      background: rgba(122, 92, 126, 0.04);
     }
 
     #social .section-label {
@@ -630,7 +671,7 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--accent);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     #social .section-label::before {
@@ -643,19 +684,19 @@
 
     #social .intro {
       font-family: 'Inter', sans-serif;
-      font-size: 15px;
+      font-size: 16px;
       color: var(--ink-muted);
-      margin-bottom: 40px;
+      margin-bottom: 32px;
       line-height: 1.6;
     }
 
     #social .social-row {
       display: flex;
       gap: 20px;
-      padding: 24px 12px;
+      padding: 28px 12px;
       margin: 0 -12px;
       border-bottom: 1px solid var(--border);
-      transition: background 0.2s;
+      transition: background 150ms, transform 150ms;
     }
 
     #social a.social-link {
@@ -726,7 +767,7 @@
     #email {
       background: var(--ink);
       margin: 0 calc(-50vw + 50%);
-      padding: 96px 0;
+      padding: 88px 0;
       text-align: center;
     }
 
@@ -741,7 +782,7 @@
       font-size: 30px;
       font-weight: 700;
       color: #fff;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       line-height: 1.3;
     }
 
@@ -750,7 +791,7 @@
       font-style: italic;
       font-size: 17px;
       color: rgba(255,255,255,0.55);
-      margin-bottom: 32px;
+      margin-bottom: 40px;
     }
 
     #email form {
@@ -791,7 +832,7 @@
 
     /* CONTACT */
     #contact {
-      padding: 96px 0;
+      padding: 88px 0;
     }
 
     #contact .section-label {
@@ -803,7 +844,7 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--accent);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     #contact .section-label::before {
@@ -818,7 +859,7 @@
       font-family: 'Playfair Display', serif;
       font-size: 32px;
       font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
     #contact .contact-body {
@@ -880,7 +921,7 @@
 
     /* FOOTER */
     #footer {
-      padding: 64px 0 32px;
+      padding: 64px 0 40px;
       border-top: 1px solid var(--border);
     }
 
@@ -1033,6 +1074,15 @@
       #contact h2 {
         font-size: 26px;
       }
+
+      #map, #social {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      #services .services-panel {
+        padding: 24px 20px;
+      }
     }
   </style>
 </head>
@@ -1092,11 +1142,13 @@
   </div>
 
   <div id="services" class="reveal">
-    <div class="section-label">What I Do, Simply</div>
-    <div class="services-list">
-      <p>I help businesses grow through email marketing, SEO, and product-led strategy.</p>
-      <p>I work as a fractional CMO or embedded partner.</p>
-      <p>I focus on execution, not just advice.</p>
+    <div class="services-panel">
+      <div class="section-label">What I Do, Simply</div>
+      <div class="services-list">
+        <p>I help businesses grow through email marketing, SEO, and product-led strategy.</p>
+        <p>I work as a fractional CMO or embedded partner.</p>
+        <p>I focus on execution, not just advice.</p>
+      </div>
     </div>
   </div>
 
