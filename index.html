@@ -414,6 +414,17 @@
       color: #fff;
     }
 
+    .map-reset {
+      background: transparent !important;
+      border-color: var(--ink-muted) !important;
+      color: var(--ink-muted) !important;
+    }
+
+    .map-reset:hover {
+      border-color: var(--accent) !important;
+      color: var(--accent) !important;
+    }
+
     .map-countries {
       font-family: 'Inter', sans-serif;
       font-size: 11px;
@@ -1017,7 +1028,7 @@
     <p class="map-copy">A lot of this is powered by a mild obsession with not paying full price for flights.</p>
     <p class="map-copy">I've spent years figuring out points, miles, routing tricks, and the kind of strategies that make airlines and hotels quietly regret their decisions. I'm usually the person friends come to before they book anything.</p>
     <p class="map-copy">Ask me how I turned a cat food purchase into an international business class flight. That's not a one-off. That's knowing the system.</p>
-    <p class="map-copy">If you're trying to get somewhere without overpaying, message me on Instagram. I'll see if I can help.</p>
+    <p class="map-copy">If you're trying to get somewhere without overpaying, message me on Instagram. I'll see if I can help. <a href="https://instagram.com/yosefsilver" target="_blank" style="color:var(--accent);text-decoration:none;white-space:nowrap"><svg style="width:13px;height:13px;vertical-align:-1px;margin-right:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>@yosefsilver</a></p>
     <div id="leaflet-map"></div>
     <div class="map-cities">
       <button class="map-city-btn" data-idx="0">KC</button>
@@ -1028,6 +1039,7 @@
       <button class="map-city-btn" data-idx="5">BUD</button>
       <button class="map-city-btn" data-idx="6">AUS</button>
       <button class="map-city-btn" data-idx="7">SEA</button>
+      <button class="map-city-btn map-reset" id="map-reset">See all</button>
     </div>
     <p class="map-countries">NL · NO · PA · PL · PT · IL · FR · DE · GR · IE · IT · MX · AR · BE · BR · CA · SXM · CZ</p>
   </div>
@@ -1204,12 +1216,9 @@
     </form>
   </div>
   <footer id="footer">
-    <div class="footer-top">
-      <span class="footer-name">Yosef Silver</span>
-      <span class="footer-copy">&copy; 2026</span>
-    </div>
     <p class="footer-tagline">Built by Yosef. Fueled by Fusion.</p>
     <p class="footer-flags">🇬🇧 🇮🇱 🇺🇸</p>
+    <p class="footer-copy">&copy; <script>document.write(new Date().getFullYear())</script></p>
   </footer>
   <script>
     // Leaflet map
@@ -1296,6 +1305,13 @@
           btns.forEach(function(b) { b.classList.remove('active'); });
           btn.classList.add('active');
         });
+      });
+
+      // Reset / See all
+      document.getElementById('map-reset').addEventListener('click', function() {
+        map.closePopup();
+        map.flyTo([20, 10], 2);
+        btns.forEach(function(b) { b.classList.remove('active'); });
       });
     })();
 
