@@ -468,15 +468,7 @@
       padding: 88px 0;
     }
 
-    #services .services-panel {
-      background: var(--bg-alt);
-      border: 1px solid rgba(26,26,26,0.08);
-      border-radius: 10px;
-      padding: 36px 40px;
-      max-width: 620px;
-    }
-
-    #services .services-panel .section-label {
+    #services .section-label {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -485,10 +477,10 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--accent);
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
 
-    #services .services-panel .section-label::before {
+    #services .section-label::before {
       content: '';
       display: inline-block;
       width: 32px;
@@ -498,12 +490,11 @@
 
     #services .services-list p {
       font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      color: var(--ink-muted);
+      font-size: 18px;
+      color: var(--ink);
       line-height: 1.7;
-      margin-bottom: 10px;
-      padding-left: 16px;
-      border-left: 2px solid var(--accent);
+      margin-bottom: 8px;
+      max-width: 620px;
     }
 
     #services .services-list p:last-child {
@@ -1080,9 +1071,6 @@
         padding-right: 20px;
       }
 
-      #services .services-panel {
-        padding: 24px 20px;
-      }
     }
   </style>
 </head>
@@ -1142,13 +1130,11 @@
   </div>
 
   <div id="services" class="reveal">
-    <div class="services-panel">
-      <div class="section-label">What I Do, Simply</div>
-      <div class="services-list">
-        <p>I help businesses grow through email marketing, SEO, and product-led strategy.</p>
-        <p>I work as a fractional CMO or embedded partner.</p>
-        <p>I focus on execution, not just advice.</p>
-      </div>
+    <div class="section-label">What I Do, Simply</div>
+    <div class="services-list">
+      <p>I help businesses grow through email marketing, SEO, and product-led strategy.</p>
+      <p>I work as a fractional CMO or embedded partner.</p>
+      <p>I focus on execution, not just advice.</p>
     </div>
   </div>
 
