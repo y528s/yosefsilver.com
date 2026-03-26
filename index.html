@@ -1293,6 +1293,57 @@
           .bindTooltip(v.name, { direction: 'top', offset: [0, -6] });
       });
 
+      // US states — small plum dots
+      var statePins = [
+        { lat: 34.05, lng: -111.09, name: 'Arizona' },
+        { lat: 34.8, lng: -92.2, name: 'Arkansas' },
+        { lat: 36.78, lng: -119.42, name: 'California' },
+        { lat: 39.55, lng: -105.78, name: 'Colorado' },
+        { lat: 41.6, lng: -72.7, name: 'Connecticut' },
+        { lat: 38.91, lng: -77.04, name: 'Washington DC' },
+        { lat: 27.66, lng: -81.52, name: 'Florida' },
+        { lat: 32.17, lng: -82.91, name: 'Georgia' },
+        { lat: 40.63, lng: -89.4, name: 'Illinois' },
+        { lat: 41.88, lng: -93.1, name: 'Iowa' },
+        { lat: 39.01, lng: -98.48, name: 'Kansas' },
+        { lat: 30.98, lng: -91.96, name: 'Louisiana' },
+        { lat: 45.25, lng: -69.45, name: 'Maine' },
+        { lat: 39.05, lng: -76.64, name: 'Maryland' },
+        { lat: 42.41, lng: -71.38, name: 'Massachusetts' },
+        { lat: 44.31, lng: -85.6, name: 'Michigan' },
+        { lat: 46.73, lng: -94.69, name: 'Minnesota' },
+        { lat: 32.35, lng: -89.4, name: 'Mississippi' },
+        { lat: 37.96, lng: -91.83, name: 'Missouri' },
+        { lat: 41.49, lng: -99.9, name: 'Nebraska' },
+        { lat: 38.8, lng: -116.42, name: 'Nevada' },
+        { lat: 40.06, lng: -74.41, name: 'New Jersey' },
+        { lat: 34.52, lng: -105.87, name: 'New Mexico' },
+        { lat: 43.3, lng: -74.22, name: 'New York' },
+        { lat: 40.42, lng: -82.91, name: 'Ohio' },
+        { lat: 35.47, lng: -97.52, name: 'Oklahoma' },
+        { lat: 43.8, lng: -120.55, name: 'Oregon' },
+        { lat: 41.2, lng: -77.19, name: 'Pennsylvania' },
+        { lat: 35.52, lng: -86.58, name: 'Tennessee' },
+        { lat: 31.97, lng: -99.9, name: 'Texas' },
+        { lat: 39.32, lng: -111.09, name: 'Utah' },
+        { lat: 44.56, lng: -72.58, name: 'Vermont' },
+        { lat: 37.77, lng: -78.17, name: 'Virginia' },
+        { lat: 47.75, lng: -120.74, name: 'Washington' },
+        { lat: 38.6, lng: -80.45, name: 'West Virginia' },
+        { lat: 43.78, lng: -88.79, name: 'Wisconsin' }
+      ];
+
+      statePins.forEach(function(s) {
+        var icon = L.divIcon({
+          className: '',
+          html: '<div class="map-pin-visited"></div>',
+          iconSize: [8, 8],
+          iconAnchor: [4, 4]
+        });
+        L.marker([s.lat, s.lng], { icon: icon }).addTo(map)
+          .bindTooltip(s.name, { direction: 'top', offset: [0, -6] });
+      });
+
       // City button interaction
       var btns = document.querySelectorAll('.map-city-btn');
       btns.forEach(function(btn) {
