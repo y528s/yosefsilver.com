@@ -12,13 +12,18 @@
     "name": "Yosef Silver",
     "url": "https://yosefsilver.com",
     "image": "https://yosefsilver.com/yosef-silver-headshot.jpg",
-    "jobTitle": "Founder & CEO",
+    "jobTitle": "Marketing Consultant",
     "worksFor": {
       "@type": "Organization",
       "name": "Fusion Inbound",
       "url": "https://fusioninbound.com"
     },
-    "description": "Digital marketer, entrepreneur, and community connector based in Kansas City. Founder of Fusion Inbound, High Opens, Jewish Swag Shop, and GatherKC.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kansas City",
+      "addressCountry": "US"
+    },
+    "description": "Marketing consultant specializing in email marketing, SEO, and growth strategy. Founder of Fusion and multiple community-driven projects.",
     "sameAs": [
       "https://linkedin.com/in/ysilver",
       "https://twitter.com/ysilver",
@@ -51,6 +56,19 @@
       "@type": "Place",
       "name": "Overland Park, Kansas, United States"
     }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Fusion",
+    "url": "https://fusioninbound.com",
+    "founder": {
+      "@type": "Person",
+      "name": "Yosef Silver"
+    },
+    "description": "Digital marketing agency specializing in email marketing, SEO, and web development."
   }
   </script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -177,6 +195,10 @@
       margin-bottom: 12px;
     }
 
+    /* TEXT WIDTH CONSTRAINTS */
+    #hero .headline, #hero .sub, #hero .body { max-width: 560px; }
+    #about p, #map .map-copy, #work .intro, #social .intro, #contact .contact-body { max-width: 640px; }
+
     /* FLOATING ACTION BUTTON */
     .fab {
       position: fixed;
@@ -217,7 +239,7 @@
 
     /* ABOUT */
     #about {
-      padding: 64px 0 0;
+      padding: 96px 0 0;
       overflow: hidden;
     }
 
@@ -267,7 +289,7 @@
 
     /* MAP */
     #map {
-      padding: 64px 0;
+      padding: 96px 0;
     }
 
     #map .section-label {
@@ -435,9 +457,25 @@
       opacity: 0.7;
     }
 
+    /* SERVICES */
+    #services {
+      padding: 96px 0;
+    }
+
+    #services .services-list p {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      color: var(--ink-muted);
+      line-height: 1.75;
+      margin-bottom: 12px;
+      max-width: 640px;
+      padding-left: 16px;
+      border-left: 2px solid var(--accent);
+    }
+
     /* WORK */
     #work {
-      padding: 64px 0;
+      padding: 96px 0;
     }
 
     #work .section-label {
@@ -484,6 +522,7 @@
 
     #work .brand-row:hover {
       background: rgba(122, 92, 126, 0.12);
+      transform: translateY(-1px);
     }
 
     #work .brand-logo {
@@ -579,7 +618,7 @@
 
     /* SOCIAL */
     #social {
-      padding: 64px 0;
+      padding: 96px 0;
     }
 
     #social .section-label {
@@ -632,6 +671,7 @@
 
     #social .social-row:hover {
       background: rgba(122, 92, 126, 0.12);
+      transform: translateY(-1px);
     }
 
     #social .social-icon {
@@ -686,7 +726,7 @@
     #email {
       background: var(--ink);
       margin: 0 calc(-50vw + 50%);
-      padding: 64px 0;
+      padding: 96px 0;
       text-align: center;
     }
 
@@ -751,7 +791,7 @@
 
     /* CONTACT */
     #contact {
-      padding: 64px 0;
+      padding: 96px 0;
     }
 
     #contact .section-label {
@@ -840,7 +880,7 @@
 
     /* FOOTER */
     #footer {
-      padding: 48px 0 32px;
+      padding: 64px 0 32px;
       border-top: 1px solid var(--border);
     }
 
@@ -861,6 +901,17 @@
       font-size: 13px;
       color: var(--ink-muted);
       text-align: center;
+    }
+
+    #footer .footer-summary {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--ink-muted);
+      opacity: 0.5;
+      text-align: center;
+      max-width: 480px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
     }
 
     #footer .footer-tagline {
@@ -1002,14 +1053,15 @@
     <h1 class="headline">Connecting people is the work.</h1>
     <p class="sub">I create the kind of things people gather around.</p>
     <p class="body">Through marketing, technology, and community - it shows up in companies, campaigns, and rooms full of people who didn't know they needed each other.</p>
-    <p class="body">Also, dad of three. Which turns out to be the best training for all of it.</p>
+    <p class="body">Also, dad of three. Turns out that's the best training for all of this.</p>
+    <p class="body" style="margin-top:24px">I work with businesses that want to grow. If that's you, let's talk.</p>
   </div>
   <div id="about" class="reveal">
     <div class="headshot-frame">
       <img class="headshot" src="https://raw.githubusercontent.com/y528s/yosefsilver.com/main/yosef%20silver%20headshot.jpg" alt="Yosef Silver headshot">
       <p class="caption">Yosef, part strategy, part wanderlust.</p>
     </div>
-    <p>Most of my work sits at the intersection of business, community, and family. Professionally, that shows up through marketing and email marketing, helping businesses communicate clearly and actually connect with the people they're trying to reach. The goal is simple: create things people gather around. Sometimes that's a company or a product. Sometimes it's a room full of people who didn't know they needed each other. It all has to work in the real world, not just sound good on paper.</p>
+    <p>Most of my work sits at the intersection of business, community, and family. Professionally, that shows up through marketing and email marketing, helping businesses communicate clearly and actually connect with the people they're trying to reach. The goal is simple: create things people gather around. Sometimes that's a company or a product. Sometimes it's a room full of people who didn't know they needed each other. It all has to work actually work, not just sound good on paper.</p>
     <p>A healthy dose of wanderlust fuels a lot of this. By the time I bought my first home at 24, it was my 30th address. Originally from the UK and now based in Kansas City, by way of Jerusalem and Los Angeles, that movement shapes how I see things. It makes it easier to notice how people think, what they value, and what actually works across different worlds.</p>
     <p>Fusion is the engine. It's the marketing and email marketing agency that funds everything else. From there, I run High Opens for cannabis brands, Jewish Swag Shop, GatherKC, and a handful of community projects. Not a portfolio. An ecosystem. Each piece feeds the others.</p>
     <p class="closing">"The way we gather matters."</p>
@@ -1038,9 +1090,19 @@
     </div>
     <p class="map-countries">🌍 AI · AR · AU · BE · BR · CA · CH · CZ · DE · FR · GB · GR · HU · IE · IL · IT · MX · NIR · NL · NO · PA · PL · PT · SCT · SXM · US · UY &nbsp; 🇺🇸 <span class="map-states-inline">AZ · AR · CA · CO · CT · DC · FL · GA · IL · IA · KS · LA · ME · MD · MA · MI · MN · MS · MO · NE · NV · NJ · NM · NY · OH · OK · OR · PA · TN · TX · UT · VT · VA · WA · WV · WI</span></p>
   </div>
+
+  <div id="services" class="reveal">
+    <div class="section-label">What I Do, Simply</div>
+    <div class="services-list">
+      <p>I help businesses grow through email marketing, SEO, and product-led strategy.</p>
+      <p>I work as a fractional CMO or embedded partner.</p>
+      <p>I focus on execution, not just advice.</p>
+    </div>
+  </div>
+
   <div id="work" class="reveal">
     <div class="section-label">Things I've Built</div>
-    <p class="intro">Everything I run is connected. Here is what that looks like.</p>
+    <p class="intro">Everything I run is connected.</p>
 
     <div class="brand-row">
       <a class="brand-link" href="https://fusioninbound.com" target="_blank">
@@ -1203,7 +1265,7 @@
   <div id="contact" class="reveal">
     <div class="section-label">Get in touch</div>
     <h2>Let's start the conversation.</h2>
-    <p class="contact-body">If something here resonates, reach out. Work, an idea, or just a conversation. Prefer WhatsApp? Send your number and I'll message you there.</p>
+    <p class="contact-body">If something here resonates, reach out. Work, an idea, or just a conversation. Prefer WhatsApp? Leave your number and I'll message you there.</p>
     <form action="https://formspree.io/f/mwvwklyd" method="POST">
       <input type="text" name="name" placeholder="Name" required>
       <input type="email" name="email" placeholder="Email" required>
@@ -1213,6 +1275,7 @@
     </form>
   </div>
   <footer id="footer">
+    <p class="footer-summary">Yosef Silver is a marketing consultant based in Kansas City. He works with businesses on email marketing, SEO, and growth strategy. He also builds community-driven projects and writes about Jewish identity and global perspective.</p>
     <p class="footer-tagline">Built by Yosef. Fueled by Fusion.</p>
     <p class="footer-flags">🇬🇧 🇮🇱 🇺🇸</p>
     <p class="footer-copy">&copy; <script>document.write(new Date().getFullYear())</script></p>
