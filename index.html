@@ -174,11 +174,7 @@
       font-size: 17px;
       color: var(--ink-muted);
       line-height: 1.7;
-      margin-bottom: 40px;
-    }
-
-    #hero .btn {
-      display: none;
+      margin-bottom: 0;
     }
 
     /* FLOATING ACTION BUTTON */
@@ -491,6 +487,8 @@
       height: 60px;
       object-fit: contain;
       mix-blend-mode: multiply;
+      background: #F6F2E9;
+      border-radius: 4px;
     }
 
     #work .brand-icon {
@@ -850,6 +848,7 @@
       font-family: 'Inter', sans-serif;
       font-size: 13px;
       color: var(--ink-muted);
+      text-align: center;
     }
 
     #footer .footer-tagline {
@@ -912,20 +911,6 @@
 
       #hero {
         padding: 80px 0 40px;
-      }
-
-      #hero .btn {
-        display: inline-block;
-        font-family: 'Inter', sans-serif;
-        font-weight: 500;
-        font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        color: #fff;
-        background: var(--accent);
-        padding: 14px 32px;
-        text-decoration: none;
-        border-radius: 4px;
       }
 
       .fab {
@@ -1009,7 +994,6 @@
     <h1 class="headline">Connecting people is the work.</h1>
     <p class="sub">I create the kind of things people gather around.</p>
     <p class="body">Through marketing, technology, and community - it shows up in companies, campaigns, and rooms full of people who didn't know they needed each other.</p>
-    <a class="btn" href="#contact">Say hello →</a>
   </div>
   <div id="about" class="reveal">
     <div class="headshot-frame">
@@ -1333,21 +1317,24 @@
     (function() {
       var fab = document.getElementById('fab');
       var contact = document.getElementById('contact');
+      var isTop = false;
 
-      var contactObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            fab.classList.add('is-top');
-            fab.setAttribute('href', '#');
-            fab.innerHTML = 'Back to top \u2191';
-          } else {
-            fab.classList.remove('is-top');
-            fab.setAttribute('href', '#contact');
-            fab.innerHTML = 'Say hello \u2192';
-          }
-        });
-      }, { threshold: 0.2 });
-      contactObserver.observe(contact);
+      window.addEventListener('scroll', function() {
+        var rect = contact.getBoundingClientRect();
+        var inView = rect.top < window.innerHeight * 0.8;
+
+        if (inView && !isTop) {
+          isTop = true;
+          fab.classList.add('is-top');
+          fab.setAttribute('href', '#');
+          fab.innerHTML = 'Back to top \u2191';
+        } else if (!inView && isTop) {
+          isTop = false;
+          fab.classList.remove('is-top');
+          fab.setAttribute('href', '#contact');
+          fab.innerHTML = 'Say hello \u2192';
+        }
+      });
     })();
   </script>
   <a class="fab" id="fab" href="#contact">Say hello →</a>
