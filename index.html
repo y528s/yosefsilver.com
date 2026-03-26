@@ -477,24 +477,28 @@
       position: relative;
     }
 
+    #work a.brand-link {
+      padding-right: 24px;
+    }
+
     #work a.brand-link::after {
       content: '\2197';
       position: absolute;
       top: 0;
       right: 0;
-      font-size: 16px;
+      font-size: 14px;
       color: var(--ink-muted);
-      opacity: 0.4;
+      opacity: 0.3;
       transition: opacity 0.2s, color 0.2s;
     }
 
     #work a.brand-link:hover::after {
       opacity: 1;
-      color: var(--plum);
+      color: #9B6FA0;
     }
 
     #work a.brand-link:hover .brand-name {
-      color: var(--plum);
+      color: #9B6FA0;
       transition: color 0.2s;
     }
 
@@ -565,7 +569,7 @@
     }
 
     #social .social-row:hover .social-icon {
-      color: var(--plum);
+      color: #9B6FA0;
     }
 
     #social .social-content {
