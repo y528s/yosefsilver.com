@@ -619,7 +619,14 @@
       transition: background 0.2s;
     }
 
-    #social .social-row:first-of-type {
+    #social a.social-link {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    #social .social-row:first-of-type,
+    #social .social-row:first-child {
       border-top: 1px solid var(--border);
     }
 
@@ -1029,7 +1036,7 @@
       <button class="map-city-btn" data-idx="9">WHR</button>
       <button class="map-city-btn map-reset" id="map-reset">See all</button>
     </div>
-    <p class="map-countries">🌍 US · GB · IL · NO · HU · AU · CA · NL · PA · PL · PT · FR · DE · GR · IE · NIR · IT · MX · AR · UY · BE · BR · SXM · CZ · SCT · CH · AI &nbsp; 🇺🇸 <span class="map-states-inline">AZ · AR · CA · CO · CT · DC · FL · GA · IL · IA · KS · LA · ME · MD · MA · MI · MN · MS · MO · NE · NV · NJ · NM · NY · OH · OK · OR · PA · TN · TX · UT · VT · VA · WA · WV · WI</span></p>
+    <p class="map-countries">🌍 AI · AR · AU · BE · BR · CA · CH · CZ · DE · FR · GB · GR · HU · IE · IL · IT · MX · NIR · NL · NO · PA · PL · PT · SCT · SXM · US · UY &nbsp; 🇺🇸 <span class="map-states-inline">AZ · AR · CA · CO · CT · DC · FL · GA · IL · IA · KS · LA · ME · MD · MA · MI · MN · MS · MO · NE · NV · NJ · NM · NY · OH · OK · OR · PA · TN · TX · UT · VT · VA · WA · WV · WI</span></p>
   </div>
   <div id="work" class="reveal">
     <div class="section-label">Things I've Built</div>
@@ -1127,41 +1134,41 @@
     <div class="section-label">Where to Find Me</div>
     <p class="intro">Each of these is genuinely different. Here is what to expect.</p>
 
-    <div class="social-row">
+    <a class="social-row social-link" href="https://instagram.com/yosefsilver" target="_blank">
       <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
       <div class="social-content">
-        <div class="social-platform"><a href="https://instagram.com/yosefsilver" target="_blank">Instagram &middot; @yosefsilver</a></div>
+        <div class="social-platform">Instagram &middot; @yosefsilver</div>
         <div class="social-hook">Food, travel, and figuring out how to see more of the world for less.</div>
         <div class="social-desc">Trips, family, and a mild obsession with points and miles.</div>
       </div>
-    </div>
+    </a>
 
-    <div class="social-row">
+    <a class="social-row social-link" href="https://linkedin.com/in/ysilver" target="_blank">
       <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
       <div class="social-content">
-        <div class="social-platform"><a href="https://linkedin.com/in/ysilver" target="_blank">LinkedIn &middot; ysilver</a></div>
+        <div class="social-platform">LinkedIn &middot; ysilver</div>
         <div class="social-hook">Marketing, email, SEO, and whatever I'm building right now.</div>
         <div class="social-desc">If we're working together or should be, start here.</div>
       </div>
-    </div>
+    </a>
 
-    <div class="social-row">
+    <a class="social-row social-link" href="https://speakingfromwithin.substack.com" target="_blank">
       <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="4" x2="20" y2="4"/><line x1="4" y1="10" x2="20" y2="10"/><path d="M4 16l8 5 8-5"/></svg>
       <div class="social-content">
-        <div class="social-platform"><a href="https://speakingfromwithin.substack.com" target="_blank">Substack</a></div>
+        <div class="social-platform">Substack</div>
         <div class="social-hook">Speaking From Within for essays, often about Jewish culture or world events.</div>
         <div class="social-desc">Sometimes a reply to an article that riled me up.</div>
       </div>
-    </div>
+    </a>
 
-    <div class="social-row">
+    <a class="social-row social-link" href="https://twitter.com/ysilver" target="_blank">
       <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.7 16H20L8.3 4H4z"/><path d="M4 20l6.8-8"/><path d="M20 4l-6.8 8"/></svg>
       <div class="social-content">
-        <div class="social-platform"><a href="https://twitter.com/ysilver" target="_blank">X/Twitter &middot; @ysilver</a></div>
+        <div class="social-platform">X/Twitter &middot; @ysilver</div>
         <div class="social-hook">I've been here long enough to have my name as my handle.</div>
         <div class="social-desc">I post occasionally. My DMs often include casual antisemitism and people explaining my own identity back to me.</div>
       </div>
-    </div>
+    </a>
 
     <div class="social-row" style="cursor: default;">
       <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -1172,14 +1179,14 @@
       </div>
     </div>
 
-    <div class="social-row">
+    <a class="social-row social-link" href="https://ko-fi.com/ysilver" target="_blank">
       <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
       <div class="social-content">
-        <div class="social-platform"><a href="https://ko-fi.com/ysilver" target="_blank">Ko-fi</a></div>
+        <div class="social-platform">Ko-fi</div>
         <div class="social-hook">If something I built or wrote was useful, this is the tip jar.</div>
         <div class="social-desc">No pressure. Just there if you want it.</div>
       </div>
-    </div>
+    </a>
   </div>
   <div id="email">
     <div class="email-inner reveal">
