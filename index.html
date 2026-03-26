@@ -430,6 +430,15 @@
       opacity: 0.6;
     }
 
+    .map-states {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      margin-top: 6px;
+      opacity: 0.5;
+    }
+
     /* WORK */
     #work {
       padding: 64px 0;
@@ -1024,9 +1033,11 @@
       <button class="map-city-btn" data-idx="6">AUS</button>
       <button class="map-city-btn" data-idx="7">SEA</button>
       <button class="map-city-btn" data-idx="8">BGO</button>
+      <button class="map-city-btn" data-idx="9">WHR</button>
       <button class="map-city-btn map-reset" id="map-reset">See all</button>
     </div>
-    <p class="map-countries">US · GB · IL · NO · HU · AU · NL · PA · PL · PT · FR · DE · GR · IE · NIR · IT · MX · AR · UY · BE · BR · CA · SXM · CZ · SCT · CH</p>
+    <p class="map-countries">US · GB · IL · NO · HU · AU · CA · NL · PA · PL · PT · FR · DE · GR · IE · NIR · IT · MX · AR · UY · BE · BR · SXM · CZ · SCT · CH</p>
+    <p class="map-states">AZ · AR · CA · CO · CT · DC · FL · GA · IL · IA · KS · LA · ME · MD · MA · MI · MN · MS · MO · NE · NV · NJ · NM · NY · OH · OK · OR · PA · TN · TX · UT · VT · VA · WA · WV · WI</p>
   </div>
   <div id="work" class="reveal">
     <div class="section-label">Things I've Built</div>
@@ -1231,7 +1242,8 @@
         { lat: 46.9, lng: 18.05, city: 'Siofok, Hungary', note: 'Best speaking engagement.' },
         { lat: -25.3, lng: 133.8, city: 'Australia', note: 'Most memorable trip.' },
         { lat: 47.61, lng: -122.33, city: 'Seattle, WA', note: 'My PNW happy place.' },
-        { lat: 60.39, lng: 5.32, city: 'Bergen, Norway', note: 'Brightest summer night experienced.' }
+        { lat: 60.39, lng: 5.32, city: 'Bergen, Norway', note: 'Brightest summer night experienced.' },
+        { lat: 50.12, lng: -122.95, city: 'Whistler, Canada', note: 'Best client on-site.' }
       ];
 
       var markers = [];
@@ -1263,7 +1275,6 @@
         { lat: 50.85, lng: 4.35, name: 'Belgium' },
         { lat: -25.69, lng: -54.44, name: 'Brazil' },
         { lat: -34.9, lng: -56.16, name: 'Uruguay' },
-        { lat: 56.13, lng: -106.35, name: 'Canada' },
         { lat: 18.0, lng: -63.1, name: 'Saint Martin' },
         { lat: 49.82, lng: 15.47, name: 'Czech Republic' },
         { lat: 54.6, lng: -5.93, name: 'Northern Ireland' },
